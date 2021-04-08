@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <form name="frmDatos" method="post" action="AgregarCarrera">
+            <table>
+                <tr>
+                    <th>Nombre de la Carrera</th>
+                    <td><input type="text" name="txtNombre" id="txtNombre" placeholder="Nombre de la carrera" required="required"/></td>
+                </tr>
+                <tr>
+                    <th>Duración</th>
+                    <td><input type="number" name="txtDuracion" value="4" min="3" max="6" step="1" required="required"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Enviar" name="btnEnviar"/>
+                    </td>
+                </tr>
+            </table>
+    </body>
+</html>
