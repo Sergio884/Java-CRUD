@@ -8,6 +8,7 @@ package com.ipn.mx.modelo.dao;
 import com.ipn.mx.modelo.dto.AlumnoDTO;
 import com.ipn.mx.modelo.entidades.Alumno;
 import com.ipn.mx.modelo.entidades.Carrera;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ import java.util.List;
  * @author edgar
  */
 public class AlumnoDAO {
-    private static final String SQL_INSERT = "insert into alumno(nombre, paterno, materno, email, noBoleta, idCarrera) values(?,?,?,?,?,?)";
+    private static final String SQL_INSERT = "{call spCreate(?,?,?,?,?,?);}";
     private static final String SQL_UPDATE = "update alumno set nombre = ?, paterno = ?, materno = ?, email = ?, noBoleta = ?, idCarrera = ? where idAlumno = ?";
     private static final String SQL_DELETE = "delete from alumno where idAlumno = ?";
     private static final String SQL_READ = "select * from alumno where idAlumno = ?";
@@ -47,19 +48,19 @@ public class AlumnoDAO {
     
     public void create(Connection con, AlumnoDTO dto)throws SQLException{
         obtenerConexion();
-        PreparedStatement ps = null;
+        CallableStatement cs = null;
         try{
-            ps = conexion.prepareStatement(SQL_INSERT);
-            ps.setString(1, dto.getEntidad().getNombre());
-            ps.setString(2, dto.getEntidad().getPaterno());
-            ps.setString(3, dto.getEntidad().getMaterno());
-            ps.setString(4, dto.getEntidad().getEmail());
-            ps.setString(5, dto.getEntidad().getNoBoleta());
-            ps.setInt(6, dto.getEntidad().getIdCarrera());
-            ps.executeUpdate();
+            cs = conexion.prepareCall(SQL_INSERT);
+            cs.setString(1, dto.getEntidad().getNombre());
+            cs.setString(2, dto.getEntidad().getPaterno());
+            cs.setString(3, dto.getEntidad().getMaterno());
+            cs.setString(4, dto.getEntidad().getEmail());
+            cs.setString(5, dto.getEntidad().getNoBoleta());
+            cs.setInt(6, dto.getEntidad().getIdCarrera());
+            cs.executeUpdate();
         }finally{
-            if (ps != null) {
-                ps.close();
+            if (cs != null) {
+                cs.close();
             }
             if (conexion != null) {
                 conexion.close();
@@ -68,20 +69,20 @@ public class AlumnoDAO {
     }
     public void update(Connection con, AlumnoDTO dto)throws SQLException{
         obtenerConexion();
-        PreparedStatement ps = null;
+        CallableStatement cs = null;
         try{
-            ps = conexion.prepareStatement(SQL_UPDATE);
-            ps.setString(1, dto.getEntidad().getNombre());
-            ps.setString(2, dto.getEntidad().getPaterno());
-            ps.setString(3, dto.getEntidad().getMaterno());
-            ps.setString(4, dto.getEntidad().getEmail());
-            ps.setString(5, dto.getEntidad().getNoBoleta());
-            ps.setInt(6, dto.getEntidad().getIdCarrera());
-            ps.setInt(7, dto.getEntidad().getIdAlumno());
-            ps.executeUpdate();
+            cs = conexion.prepareCall(SQL_UPDATE);
+            cs.setString(1, dto.getEntidad().getNombre());
+            cs.setString(2, dto.getEntidad().getPaterno());
+            cs.setString(3, dto.getEntidad().getMaterno());
+            cs.setString(4, dto.getEntidad().getEmail());
+            cs.setString(5, dto.getEntidad().getNoBoleta());
+            cs.setInt(6, dto.getEntidad().getIdCarrera());
+            cs.setInt(7, dto.getEntidad().getIdAlumno());
+            cs.executeUpdate();
         }finally{
-            if (ps != null) {
-                ps.close();
+            if (cs != null) {
+                cs.close();
             }
             if (conexion != null) {
                 conexion.close();
@@ -90,14 +91,14 @@ public class AlumnoDAO {
     }
     public void delete(Connection con, AlumnoDTO dto)throws SQLException{
         obtenerConexion();
-        PreparedStatement ps = null;
+        CallableStatement cs = null;
         try{
-            ps = conexion.prepareStatement(SQL_DELETE);
-            ps.setInt(1, dto.getEntidad().getIdAlumno());
-            ps.executeUpdate();
+            cs = conexion.prepareCall(SQL_DELETE);
+            cs.setInt(1, dto.getEntidad().getIdAlumno());
+            cs.executeUpdate();
         }finally{
-            if (ps != null) {
-                ps.close();
+            if (cs != null) {
+                cs.close();
             }
             if (conexion != null) {
                 conexion.close();
@@ -106,12 +107,12 @@ public class AlumnoDAO {
     }
     public Alumno read(Connection con, AlumnoDTO dto) throws SQLException {
         obtenerConexion();
-        PreparedStatement ps = null;
+        CallableStatement cs = null;
         ResultSet rs = null;
         try {
-            ps = conexion.prepareStatement(SQL_READ);
-            ps.setInt(1, dto.getEntidad().getIdAlumno());
-            rs = ps.executeQuery();
+            cs = conexion.prepareCall(SQL_READ);
+            cs.setInt(1, dto.getEntidad().getIdAlumno());
+            rs = cs.executeQuery();
             List resultados = obtenerResultados(rs);
             if(resultados.size() > 0){
                 return (Alumno) resultados.get(0);
@@ -122,8 +123,8 @@ public class AlumnoDAO {
             if (rs != null) {
                 rs.close();
             }
-            if (ps != null) {
-                ps.close();
+            if (cs != null) {
+                cs.close();
             }
             if (conexion != null) {
                 conexion.close();
@@ -132,11 +133,11 @@ public class AlumnoDAO {
     }
     public List readAll() throws SQLException {
         obtenerConexion();
-        PreparedStatement ps = null;
+        CallableStatement cs = null;
         ResultSet rs = null;
         try {
-            ps = conexion.prepareStatement(SQL_READ_ALL);
-            rs = ps.executeQuery();
+            cs = conexion.prepareCall(SQL_READ_ALL);
+            rs = cs.executeQuery();
             List resultados = obtenerResultados(rs);
             if(resultados.size() > 0){
                 return resultados;
@@ -147,8 +148,8 @@ public class AlumnoDAO {
             if (rs != null) {
                 rs.close();
             }
-            if (ps != null) {
-                ps.close();
+            if (cs != null) {
+                cs.close();
             }
             if (conexion != null) {
                 conexion.close();
