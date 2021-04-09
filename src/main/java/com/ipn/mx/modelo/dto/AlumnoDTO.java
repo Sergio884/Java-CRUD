@@ -27,6 +27,18 @@ public class AlumnoDTO implements Serializable {
         this.entidad = entidad;
     }
     
-    
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("ID: ").append(getEntidad().getIdAlumno()).append("\n");
+        sb.append("Nombre: ").append(getEntidad().getNombre()).append("\n");
+        
+        return sb.toString();
+        
+    }
     
 }
+
+
+

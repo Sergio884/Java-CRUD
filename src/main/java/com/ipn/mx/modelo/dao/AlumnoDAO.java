@@ -24,11 +24,11 @@ import java.util.List;
  * @author edgar
  */
 public class AlumnoDAO {
-    private static final String SQL_INSERT = "{call spCreate(?,?,?,?,?,?);}";
-    private static final String SQL_UPDATE = "update alumno set nombre = ?, paterno = ?, materno = ?, email = ?, noBoleta = ?, idCarrera = ? where idAlumno = ?";
-    private static final String SQL_DELETE = "delete from alumno where idAlumno = ?";
-    private static final String SQL_READ = "select * from alumno where idAlumno = ?";
-    private static final String SQL_READ_ALL = "select * from alumno";
+    private static final String SQL_INSERT = "{call spCreate(?,?,?,?,?,?)}";
+    private static final String SQL_UPDATE = "{call spUpdate(?,?,?,?,?,?.?)}";
+    private static final String SQL_DELETE = "{call spDelete(?)}";
+    private static final String SQL_READ = "{call spRead(?)}";
+    private static final String SQL_READ_ALL = "call spReadAll()";
 
     private Connection conexion;
 
@@ -46,7 +46,7 @@ public class AlumnoDAO {
         }
     }
     
-    public void create(Connection con, AlumnoDTO dto)throws SQLException{
+    public void create(AlumnoDTO dto)throws SQLException{
         obtenerConexion();
         CallableStatement cs = null;
         try{
@@ -67,7 +67,7 @@ public class AlumnoDAO {
             }
         }
     }
-    public void update(Connection con, AlumnoDTO dto)throws SQLException{
+    public void update(AlumnoDTO dto)throws SQLException{
         obtenerConexion();
         CallableStatement cs = null;
         try{
@@ -89,7 +89,7 @@ public class AlumnoDAO {
             }
         }
     }
-    public void delete(Connection con, AlumnoDTO dto)throws SQLException{
+    public void delete(AlumnoDTO dto)throws SQLException{
         obtenerConexion();
         CallableStatement cs = null;
         try{
@@ -105,7 +105,7 @@ public class AlumnoDAO {
             }
         }
     }
-    public Alumno read(Connection con, AlumnoDTO dto) throws SQLException {
+    public Alumno read(AlumnoDTO dto) throws SQLException {
         obtenerConexion();
         CallableStatement cs = null;
         ResultSet rs = null;
@@ -131,6 +131,7 @@ public class AlumnoDAO {
             }
         }
     }
+    
     public List readAll() throws SQLException {
         obtenerConexion();
         CallableStatement cs = null;
@@ -160,16 +161,38 @@ public class AlumnoDAO {
     private List obtenerResultados(ResultSet rs) throws SQLException{
         List resultados = new ArrayList();
         while(rs.next()){
-            Alumno a  = new Alumno();
-            a.setIdAlumno(rs.getInt("idAlumno"));
-            a.setNombre(rs.getString("nombre"));
-            a.setPaterno(rs.getString("paterno"));
-            a.setMaterno(rs.getString("materno"));
-            a.setEmail(rs.getString("email"));
-            a.setNoBoleta(rs.getString("noBoleta"));
-            a.setIdCarrera(rs.getInt("idCarrera"));
-            resultados.add(a);
+            AlumnoDTO dto = new AlumnoDTO();
+            dto.getEntidad().setIdAlumno(rs.getInt("idAlumno"));
+            dto.getEntidad().setNombre(rs.getString("nombre"));
+            dto.getEntidad().setPaterno(rs.getString("paterno"));
+            dto.getEntidad().setMaterno(rs.getString("materno"));
+            dto.getEntidad().setEmail(rs.getString("email"));
+            dto.getEntidad().setNoBoleta(rs.getString("noBoleta"));
+            dto.getEntidad().setIdCarrera(rs.getInt("idCarrera"));
+            resultados.add(dto);
         }
         return resultados;
+    }
+    
+    public static void main(String[] args) {
+        AlumnoDTO dto = new AlumnoDTO();
+        /*
+        dto.getEntidad().setNombre("NombreU");
+        dto.getEntidad().setPaterno("PaternoU");
+        dto.getEntidad().setMaterno("MaternoU");
+        dto.getEntidad().setEmail("correoU@email.com");
+        dto.getEntidad().setNoBoleta("2021203923");
+        dto.getEntidad().setIdCarrera(7); */
+        dto.getEntidad().setIdAlumno(2);
+        
+        AlumnoDAO dao = new AlumnoDAO();
+        try {
+          //dao.create(dto);
+          //dao.update(dto);
+            System.out.println(dao.readAll());
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }
