@@ -152,7 +152,7 @@ public class AlumnoServlet extends HttpServlet {
                     AlumnoDTO dto = (AlumnoDTO) lista.get(i);
                     out.println("<tr>");
                     out.println("<td>");
-                    out.println("<a href='AlumnoServlet?accion=ver?id="
+                    out.println("<a href='AlumnoServlet?accion=ver&id="
                             +dto.getEntidad().getIdAlumno()+"' class='btn btn-success'>"
                             +dto.getEntidad().getIdAlumno()+"</a>");
                     out.println("</td>");
@@ -178,13 +178,13 @@ public class AlumnoServlet extends HttpServlet {
                     out.println("</td>");
                     
                     out.println("<td>");
-                    out.println("<a href='AlumnoServlet?accion=actualizar?id="
+                    out.println("<a href='AlumnoServlet?accion=actualizar&id="
                             +dto.getEntidad().getIdAlumno()+"' class='btn btn-warning'>Actualizar</a>");
                     out.println("</td>");
                     
                     
                     out.println("<td>");
-                    out.println("<a href='AlumnoServlet?accion=eliminar?id="
+                    out.println("<a href='AlumnoServlet?accion=eliminar&id="
                             +dto.getEntidad().getIdAlumno()+"' class='btn btn-danger'>Eliminar</a>");
                     out.println("</td>");
                     
