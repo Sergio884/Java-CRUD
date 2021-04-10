@@ -197,6 +197,12 @@ public class AlumnoServlet extends HttpServlet {
             }
             
             out.println("</table>");
+            
+            out.println("<div align='center'>");
+            out.println("<br/>");
+            out.println("<a href='alumnoForm.html' class='btn btn-primary'>Crear Alumno</a>");
+            out.println("</div>");
+            
             out.println("</div>");
             out.println("</div>");
             out.println("</body>");
@@ -263,14 +269,13 @@ public class AlumnoServlet extends HttpServlet {
                 out.println("<th>No° Boleta</th><td>"+dto.getEntidad().getNoBoleta()+"</td>");
                 out.println("</tr>");
                 out.println("</table>");
+                out.println("<div align='center'>");
+                out.println("<a href='AlumnoServlet?accion=eliminar&id="
+                        + dto.getEntidad().getIdAlumno() + "' class='btn btn-danger'>Eliminar</a>");
+                out.println("<br/>");
+                out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a>");
+                out.println("</div>");
             }
-            out.println("<div align='center'>");
-            out.println("<a href='AlumnoServlet?accion=eliminar&id="
-                            +dto.getEntidad().getIdAlumno()+"' class='btn btn-danger'>Eliminar</a>");
-            out.println("<br/>");
-            out.println("<br/>");
-            out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a>");
-            out.println("</div>");
             
             out.println("</div>");
             out.println("</div>");
