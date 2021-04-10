@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Agregar Alumno</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form name="frmDatos" method="post" action="AgregarAlumno">
+            <table>
+                <tr>
+                    <th>Nombre del alumno</th>
+                    <td><input type="text" name="txtNombre" id="txtNombre" placeholder="Nombre del alumno" required="required"/></td>
+                </tr>
+                <tr>
+                    <th>Apellido Paterno</th>
+                    <td><input type="text" name="txtPaterno" placeholder="Apellido Paterno" required="required"/></td>
+                </tr>
+                <tr>
+                    <th>Apellido Materno</th>
+                    <td><input type="text" name="txtMaterno" placeholder="Apellido Materno" required="required"/></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="email" name="email" placeholder="Email" required="required"/></td>
+                </tr>
+                <tr>
+                    <th>Numero de Boleta</th>
+                    <td><input type="text" name="txtBoleta" placeholder="No° Boleta" required="required"/></td>
+                </tr>
+                <tr>
+                    <th>ID Carrera</th>
+                    <td><input type="number" name="idCarrera" min="1" step="1" required="required"/></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Enviar" name="btnEnviar"/>
+                    </td>
+                </tr>
+            </table>
+    </body>
+</html>
