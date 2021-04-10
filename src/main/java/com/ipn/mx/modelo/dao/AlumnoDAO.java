@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class AlumnoDAO {
     private static final String SQL_INSERT = "{call spCreate(?,?,?,?,?,?)}";
-    private static final String SQL_UPDATE = "{call spUpdate(?,?,?,?,?,?.?)}";
+    private static final String SQL_UPDATE = "{call spUpdate(?,?,?,?,?,?,?)}";
     private static final String SQL_DELETE = "{call spDelete(?)}";
     private static final String SQL_READ = "{call spRead(?)}";
     private static final String SQL_READ_ALL = "call spReadAll()";
@@ -176,21 +176,20 @@ public class AlumnoDAO {
     
     public static void main(String[] args) {
         AlumnoDTO dto = new AlumnoDTO();
-        /*
-        dto.getEntidad().setNombre("NombreU");
-        dto.getEntidad().setPaterno("PaternoU");
-        dto.getEntidad().setMaterno("MaternoU");
-        dto.getEntidad().setEmail("correoU@email.com");
-        dto.getEntidad().setNoBoleta("2021203923");
-        dto.getEntidad().setIdCarrera(7); */
+        dto.getEntidad().setNombre("Sergio");
+        dto.getEntidad().setPaterno("Valle");
+        dto.getEntidad().setMaterno("Ortiz");
+        dto.getEntidad().setEmail("edilberto.sergio.valle.ortiz@email.com");
+        dto.getEntidad().setNoBoleta("2019630028");
+        dto.getEntidad().setIdCarrera(1);
         dto.getEntidad().setIdAlumno(1);
         
         AlumnoDAO dao = new AlumnoDAO();
         try {
           //dao.create(dto);
-          //dao.update(dto);
+          dao.update(dto);
            // System.out.println(dao.readAll());
-           System.out.println(dao.read(dto));
+          // System.out.println(dao.read(dto));
         } catch (SQLException ex) {
             Logger.getLogger(AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
