@@ -288,8 +288,39 @@ public class AlumnoServlet extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void eliminarAlumno(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void eliminarAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try ( PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Eliminación</title>");     
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");
+            out.println("</head>");
+            out.println("<body>");     
+            AlumnoDAO dao = new AlumnoDAO();
+            AlumnoDTO dto = new AlumnoDTO();
+            
+            dto.getEntidad().setIdAlumno(Integer.parseInt(request.getParameter("id")));
+            String msg = "";
+             try {
+                 dao.delete(dto);
+                 msg = "Se ha eliminado al alumno exitosamente";
+             } catch (SQLException ex) {
+                 Logger.getLogger(AlumnoServlet.class.getName()).log(Level.SEVERE, null, ex);
+                 msg = "Hubo un error al eliminar al alumno";
+             }
+             
+            out.println("<div align='center'>");
+            out.println("<h1>"+msg+"</h1>");
+            out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a>");
+            out.println("</div>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
 }
