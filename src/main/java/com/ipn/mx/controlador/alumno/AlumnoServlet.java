@@ -55,11 +55,11 @@ public class AlumnoServlet extends HttpServlet {
                             }else{
                             if(accion.equals("guardar")){
                                 almacenarAlumno(request,response);
-                               }
                             }
-                         }
+                                }
+                            }
                         
-                    }
+                        }
                 }
         }
         /*response.setContentType("text/html;charset=UTF-8");
@@ -212,8 +212,63 @@ public class AlumnoServlet extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void verAlumno(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void verAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
+         response.setContentType("text/html;charset=UTF-8");
+        try ( PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Información del alumno</title>");
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<div class='container'>");
+            out.println("<div class='card-boder-info mb-3'>");
+            out.println("<div class='card-header'>Alumno</div>");
+            out.println("<div class='card-body'>");
+            out.println("<h5 class='card-title'>Información</h5>");
+            
+            AlumnoDAO dao = new AlumnoDAO();
+            AlumnoDTO dto = new AlumnoDTO();
+            
+            dto.getEntidad().setIdAlumno(Integer.parseInt(request.getParameter("id")));
+            
+             try {
+                 dto = dao.read(dto);
+             } catch (SQLException ex) {
+                 Logger.getLogger(AlumnoServlet.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            
+            if(dto != null){   
+                out.println("<table class='table table-striped'>");
+                out.println("<tr>");
+                out.println("<td>ID Alumno</td><td>"+dto.getEntidad().getIdAlumno()+"</td>");
+                out.println("</tr>");
+                out.println("<tr>");
+                out.println("<th>Nombre</th><td>"+dto.getEntidad().getNombre()+"</td>");
+                out.println("</tr>");
+                out.println("<tr>");
+                out.println("<th>Apellido Paterno</th><td>"+dto.getEntidad().getPaterno()+"</td>");
+                out.println("</tr>");
+                out.println("<tr>");
+                out.println("<th>Apellido Materno</th><td>"+dto.getEntidad().getMaterno()+"</td>");
+                out.println("</tr>");
+                out.println("<tr>");
+                out.println("<th>Email</th><td>"+dto.getEntidad().getEmail()+"</td>");
+                out.println("</tr>");
+                out.println("<tr>");
+                out.println("<th>No° Boleta</th><td>"+dto.getEntidad().getNoBoleta()+"</td>");
+                out.println("</tr>");
+                out.println("</table>");
+            }
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     private void almacenarAlumno(HttpServletRequest request, HttpServletResponse response) {

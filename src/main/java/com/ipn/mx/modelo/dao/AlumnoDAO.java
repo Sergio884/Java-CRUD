@@ -105,7 +105,7 @@ public class AlumnoDAO {
             }
         }
     }
-    public Alumno read(AlumnoDTO dto) throws SQLException {
+    public AlumnoDTO read(AlumnoDTO dto) throws SQLException {
         obtenerConexion();
         CallableStatement cs = null;
         ResultSet rs = null;
@@ -115,7 +115,7 @@ public class AlumnoDAO {
             rs = cs.executeQuery();
             List resultados = obtenerResultados(rs);
             if(resultados.size() > 0){
-                return (Alumno) resultados.get(0);
+                return (AlumnoDTO) resultados.get(0);
             }else{
                 return null;
             }
@@ -183,13 +183,14 @@ public class AlumnoDAO {
         dto.getEntidad().setEmail("correoU@email.com");
         dto.getEntidad().setNoBoleta("2021203923");
         dto.getEntidad().setIdCarrera(7); */
-        dto.getEntidad().setIdAlumno(2);
+        dto.getEntidad().setIdAlumno(1);
         
         AlumnoDAO dao = new AlumnoDAO();
         try {
           //dao.create(dto);
           //dao.update(dto);
-            System.out.println(dao.readAll());
+           // System.out.println(dao.readAll());
+           System.out.println(dao.read(dto));
         } catch (SQLException ex) {
             Logger.getLogger(AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
