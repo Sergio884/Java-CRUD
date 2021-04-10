@@ -264,6 +264,14 @@ public class AlumnoServlet extends HttpServlet {
                 out.println("</tr>");
                 out.println("</table>");
             }
+            out.println("<div align='center'>");
+            out.println("<a href='AlumnoServlet?accion=eliminar&id="
+                            +dto.getEntidad().getIdAlumno()+"' class='btn btn-danger'>Eliminar</a>");
+            out.println("<br/>");
+            out.println("<br/>");
+            out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a>");
+            out.println("</div>");
+            
             out.println("</div>");
             out.println("</div>");
             out.println("</body>");
