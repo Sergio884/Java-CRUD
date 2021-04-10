@@ -46,19 +46,19 @@ public class AgregarCarrera extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
         
-        String msg = ""    ;
-        Carrera c = new Carrera();
-        c.setNombreCarrera(request.getParameter("txtNombre"));
-        c.setDuracion(Integer.parseInt(request.getParameter("txtDuracion")));
-        
-        CarreraDAO dao = new CarreraDAO();
-        try {
-            dao.create(c);
-            msg="La carrera se agrego exitosamente";
-        } catch (SQLException ex) {
-            Logger.getLogger(CarreraDAO.class.getName()).log(Level.SEVERE, null, ex);
-            msg="Hubo un error al agregar la carrera";
-        }
+            String msg = "";
+            Carrera c = new Carrera();
+            c.setNombreCarrera(request.getParameter("txtNombre"));
+            c.setDuracion(Integer.parseInt(request.getParameter("txtDuracion")));
+
+            CarreraDAO dao = new CarreraDAO();
+            try {
+                dao.create(c);
+                msg = "La carrera se agrego exitosamente";
+            } catch (SQLException ex) {
+                Logger.getLogger(CarreraDAO.class.getName()).log(Level.SEVERE, null, ex);
+                msg = "Hubo un error al agregar la carrera";
+            }
             out.println("<div align='center'>");
             out.println(msg);
             out.println("<br/>");
