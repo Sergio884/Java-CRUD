@@ -45,7 +45,6 @@ public class AlumnoServlet extends HttpServlet {
                 nuevoAlumno(request,response); 
             }else{
                 if(accion.equals("actualizar")){
-                    System.out.println("dddddddd----------XXXXXXXXXXXXXX");
                     actualizarAlumno(request,response);
                     }else{
                         if(accion.equals("eliminar")){

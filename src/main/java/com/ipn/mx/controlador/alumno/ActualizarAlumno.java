@@ -53,13 +53,14 @@ public class ActualizarAlumno extends HttpServlet {
 
             String msg = "";
             AlumnoDTO dto = new AlumnoDTO();
-            dto.getEntidad().setNombre("Edilberto Sergio");
-            dto.getEntidad().setPaterno("Valle");
-            dto.getEntidad().setMaterno("Ortiz");
-            dto.getEntidad().setEmail("edilberto.sergio.valle.ortiz@email.com");
-            dto.getEntidad().setNoBoleta("2019630028");
-            dto.getEntidad().setIdCarrera(1);
-            dto.getEntidad().setIdAlumno(1);
+            
+            dto.getEntidad().setNombre(request.getParameter("txtNombre"));
+            dto.getEntidad().setPaterno(request.getParameter("txtPaterno"));
+            dto.getEntidad().setMaterno(request.getParameter("txtMaterno"));
+            dto.getEntidad().setEmail(request.getParameter("email"));
+            dto.getEntidad().setNoBoleta(request.getParameter("txtBoleta"));
+            dto.getEntidad().setIdCarrera(Integer.parseInt(request.getParameter("idCarrera")));
+            dto.getEntidad().setIdAlumno(Integer.parseInt(request.getParameter("id")));
 
             AlumnoDAO dao = new AlumnoDAO();
             try {
