@@ -37,12 +37,17 @@ public class VerCarrera extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Ver Carrera</title>");
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");   
             out.println("</head>");
             out.println("<body>");
 
@@ -72,9 +77,9 @@ public class VerCarrera extends HttpServlet {
                 out.println("</table>");
                 out.println("<br/>");
                 out.println("<div align='center'>");
-                out.println("<a href='EliminarCarrera?id="+c.getIdCarrera()+"'>Eliminar Carrera</a>");
+                out.println("<a href='EliminarCarrera?id="+c.getIdCarrera()+"' class='btn btn-danger'>Eliminar Carrera</a>");
                 out.println("<br/>");
-                out.println("<a href='MostrarCarreras'>Mostrar Carreras</a>");
+                out.println("<a href='MostrarCarreras' class='btn btn-success'>Mostrar Carreras</a>");
                 out.println("</div>");
             }
 

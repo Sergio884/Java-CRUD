@@ -37,12 +37,17 @@ public class ActualizarCarrera extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Actualizar Carrera</title>");            
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");               
             out.println("</head>");
             out.println("<body>");
             
@@ -74,13 +79,13 @@ public class ActualizarCarrera extends HttpServlet {
                    out.println("</tr>");
                    
                    out.println("<tr>");
-                   out.println("<td colspan='2'><br/><div align='center'><input type='submit' value='Actualizar' name='btnActualizar'></div></td>");
+                   out.println("<td colspan='2'><br/><div align='center'><input type='submit' value='Actualizar' name='btnActualizar' class='btn btn-primary'></div></td>");
                    out.println("</tr>");
                    
                 out.println("</table>");
                 out.println("<br/>");
                 out.println("<div align='center'>");
-                out.println("<a href='MostrarCarreras'>Mostrar Carreras</a>");
+                out.println("<a href='MostrarCarreras' class='btn btn-success'>Mostrar Carreras</a>");
                 out.println("</div>");
             }
             

@@ -38,16 +38,24 @@ public class MostrarCarreras extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Mostrar Carreras</title>");
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");   
             out.println("</head>");
             out.println("<body>");
-            out.println("<h3 align='center'>Listado de Carreras</h3>");
-            out.println("<table align='center' border='1'> ");
+            out.println("<div class='container'>");
+            out.println("<div class='card-boder-info mb-3'>");
+            out.println("<div class='card-body'>");
+            out.println("<h5 class='card-title'>Listado de Carreras</h5>");
+            out.println("<table class='table table-striped'");
             out.println("<tr>");
             out.println("<th>ID Carrera</th>");
             out.println("<th>Nombre Carrera</th>");
@@ -63,7 +71,7 @@ public class MostrarCarreras extends HttpServlet {
                     Carrera c = (Carrera) lista.get(i);
                     out.println("<tr>");
                     out.println("<td>");
-                    out.println("<a href='VerCarrera?id="+c.getIdCarrera()+"'>"
+                    out.println("<a href='VerCarrera?id="+c.getIdCarrera()+"' class='btn btn-success'>"
                             + c.getIdCarrera()+"</a>");
                     out.println("</td>");
                     out.println("<td>");
@@ -73,7 +81,7 @@ public class MostrarCarreras extends HttpServlet {
                     out.println(c.getDuracion());
                     out.println("</td>");
                     out.println("<td>");
-                    out.println("<a href='ActualizarCarrera?id="+c.getIdCarrera()+"'>"+
+                    out.println("<a href='ActualizarCarrera?id="+c.getIdCarrera()+"' class='btn btn-warning'>"+
                             "Actualizar</a>");
                     out.println("</td>");
                     out.println("</tr>");   
@@ -83,7 +91,11 @@ public class MostrarCarreras extends HttpServlet {
             }
             out.println("</table>");
             out.println("<div align='center'>");
-            out.println("<a href='nuevaCarrera.html'>Agregar Carrera</a>");
+            out.println("<a href='nuevaCarrera.html' class='btn btn-primary'>Agregar Carrera</a>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");

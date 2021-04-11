@@ -43,6 +43,10 @@ public class EliminarCarrera extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Eliminar Carrera</title>");            
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");               
             out.println("</head>");
             out.println("<body>");
             String msg="";
@@ -59,7 +63,7 @@ public class EliminarCarrera extends HttpServlet {
             out.println("<div align='center'>");
             out.println("<h2>"+msg+"</h2>");
             out.println("<br/>");
-            out.println("<a href='MostrarCarreras'>Mostrar Carreras</a>");
+            out.println("<a href='MostrarCarreras' class='btn btn-success'>Mostrar Carreras</a>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");

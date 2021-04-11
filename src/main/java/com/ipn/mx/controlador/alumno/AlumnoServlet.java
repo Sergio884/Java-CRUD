@@ -117,6 +117,7 @@ public class AlumnoServlet extends HttpServlet {
 
     private void listaDeAlumnos(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -216,6 +217,7 @@ public class AlumnoServlet extends HttpServlet {
 
     private void actualizarAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -294,6 +296,7 @@ public class AlumnoServlet extends HttpServlet {
 
     private void verAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
          response.setContentType("text/html;charset=UTF-8");
+         request.setCharacterEncoding("UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -364,6 +367,7 @@ public class AlumnoServlet extends HttpServlet {
 
     private void eliminarAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
