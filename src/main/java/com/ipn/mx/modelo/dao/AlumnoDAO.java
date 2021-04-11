@@ -176,6 +176,7 @@ public class AlumnoDAO {
     
     public static void main(String[] args) {
         AlumnoDTO dto = new AlumnoDTO();
+        /*
         dto.getEntidad().setNombre("Sergio");
         dto.getEntidad().setPaterno("Valle");
         dto.getEntidad().setMaterno("Ortiz");
@@ -183,13 +184,14 @@ public class AlumnoDAO {
         dto.getEntidad().setNoBoleta("2019630028");
         dto.getEntidad().setIdCarrera(1);
         dto.getEntidad().setIdAlumno(1);
-        
+        */
+        dto.getEntidad().setIdAlumno(1);
         AlumnoDAO dao = new AlumnoDAO();
         try {
           //dao.create(dto);
-          dao.update(dto);
+          //dao.update(dto);
            // System.out.println(dao.readAll());
-          // System.out.println(dao.read(dto));
+           System.out.println(dao.read(dto));
         } catch (SQLException ex) {
             Logger.getLogger(AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -45,6 +45,7 @@ public class AlumnoServlet extends HttpServlet {
                 nuevoAlumno(request,response); 
             }else{
                 if(accion.equals("actualizar")){
+                    System.out.println("dddddddd----------XXXXXXXXXXXXXX");
                     actualizarAlumno(request,response);
                     }else{
                         if(accion.equals("eliminar")){
@@ -214,8 +215,78 @@ public class AlumnoServlet extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void actualizarAlumno(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void actualizarAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Actualizar Alumno</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            
+            AlumnoDTO dto = new AlumnoDTO();
+            dto.getEntidad().setIdAlumno(Integer.parseInt(request.getParameter("id")));
+
+            AlumnoDAO dao = new AlumnoDAO();
+            try {
+                dto = dao.read(dto);
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(dto != null){
+                out.println("<form name='frmDatos' method='post' action='ActualizarAlumno?id="+dto.getEntidad().getIdAlumno()+"'>");
+                out.println("<table align='center'>");
+                   
+                  out.println("<tr>");
+                    out.println("<td>ID Alumno:</td><td>"+dto.getEntidad().getIdAlumno()+"</td>");
+                   out.println("</tr>");
+                   
+                   out.println("<tr>");
+                   out.println("<td>Nombre:</td><td><input type='text' value='"+
+                            dto.getEntidad().getNombre()+"' name='txtNombre' id='txtNombre' placeholder='Nombre de la carrera' required='required'/> </td>");
+                   out.println("</tr>");
+                   
+                   out.println("<tr>");
+                   out.println("<td>Paterno:</td><td><input type='text' value='"+
+                            dto.getEntidad().getPaterno()+"' name='txtPaterno' id='txtPaterno' placeholder='Nombre de la carrera' required='required'/> </td>");
+                   out.println("</tr>");
+                   
+                   out.println("<tr>");
+                   out.println("<td>Materno:</td><td><input type='text' value='"+
+                            dto.getEntidad().getMaterno()+"' name='txtMaterno' id='txtMaterno' placeholder='Nombre de la carrera' required='required'/> </td>");
+                   out.println("</tr>");
+                   
+                   out.println("<tr>");
+                   out.println("<td>Correo:</td><td><input type='email' value='"+
+                            dto.getEntidad().getEmail()+"' name='email' id='email' placeholder='Nombre de la carrera' required='required'/> </td>");
+                   out.println("</tr>");
+                   
+                   out.println("<tr>");
+                   out.println("<td>No° Boleta:</td><td><input type='text' value='"+
+                            dto.getEntidad().getNoBoleta()+"' name='txtBoleta' id='txtBoleta' placeholder='Nombre de la carrera' required='required'/> </td>");
+                   out.println("</tr>");
+                   
+                   out.println("<tr>");
+                    out.println("<td>ID Carrera:</td><td><input type='number' value='"+
+                            dto.getEntidad().getIdCarrera()+"' name='idCarrera' id='idCarrera' min='1' step='1' required='required'/> </td>");
+                   out.println("</tr>");
+                   
+                   out.println("<tr>");
+                   out.println("<td colspan='2'><input type='submit' value='Actualizar' name='btnActilizar'></td>");
+                   out.println("</tr>");
+                   
+                out.println("</table>");
+                out.println("<br/>");
+                out.println("<div align='center'>");
+                out.println("<a href='MostrarCarreras'>Mostrar Carreras</a>");
+                out.println("</div>");
+            }
+            
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     private void verAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
