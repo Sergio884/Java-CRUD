@@ -44,6 +44,10 @@ public class AgregarAlumno extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet AgregarAlumno</title>");            
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");
             out.println("</head>");
             out.println("<body>");
             
@@ -67,7 +71,7 @@ public class AgregarAlumno extends HttpServlet {
             out.println("<div align='center'>");
             out.println(msg);
             out.println("<br/>");
-            out.println("<a href='AlumnoServlet?accion=listaDeAlumnos'>Lista de Alumnos<a/>");
+            out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista de Alumnos<a/>");
             out.println("</div>");
             
             

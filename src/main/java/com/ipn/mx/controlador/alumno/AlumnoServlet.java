@@ -222,6 +222,10 @@ public class AlumnoServlet extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Actualizar Alumno</title>");            
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");
             out.println("</head>");
             out.println("<body>");
             
@@ -273,13 +277,13 @@ public class AlumnoServlet extends HttpServlet {
                    out.println("</tr>");
                    
                    out.println("<tr>");
-                   out.println("<td colspan='2'><input type='submit' value='Actualizar' name='btnActilizar'></td>");
+                   out.println("<td colspan='2'><div align='center'><br/><input type='submit' value='Actualizar' class='btn btn-success' name='btnActualizar'></div></td>");
                    out.println("</tr>");
                    
                 out.println("</table>");
                 out.println("<br/>");
                 out.println("<div align='center'>");
-                out.println("<a href='MostrarCarreras'>Mostrar Carreras</a>");
+                out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a>");
                 out.println("</div>");
             }
             

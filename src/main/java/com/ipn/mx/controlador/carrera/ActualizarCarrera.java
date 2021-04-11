@@ -74,7 +74,7 @@ public class ActualizarCarrera extends HttpServlet {
                    out.println("</tr>");
                    
                    out.println("<tr>");
-                   out.println("<td colspan='2'><input type='submit' value='Actualizar' name='btnActilizar'");
+                   out.println("<td colspan='2'><br/><div align='center'><input type='submit' value='Actualizar' name='btnActualizar'></div></td>");
                    out.println("</tr>");
                    
                 out.println("</table>");
