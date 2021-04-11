@@ -96,7 +96,6 @@ public class MostrarCarreras extends HttpServlet {
             out.println("</div>");
             out.println("</div>");
             out.println("</div>");
-            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }

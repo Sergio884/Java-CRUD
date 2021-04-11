@@ -131,7 +131,6 @@ public class AlumnoServlet extends HttpServlet {
             out.println("<body>");
             out.println("<div class='container'>");
             out.println("<div class='card-boder-info mb-3'>");
-            out.println("<div class='card-header'>Listado de Alumnos</div>");
             out.println("<div class='card-body'>");
             out.println("<h5 class='card-title'>Lista de Alumno</h5>");
             out.println("<table class='table table-striped'>");

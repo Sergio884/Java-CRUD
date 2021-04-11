@@ -70,7 +70,7 @@ public class AgregarAlumno extends HttpServlet {
                 msg = "Hubo un error al agregar el alumno";
             }
             out.println("<div align='center'>");
-            out.println(msg);
+            out.println("<h5 class='card-title'>"+msg+"</h5>");
             out.println("<br/>");
             out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista de Alumnos<a/>");
             out.println("</div>");
