@@ -55,7 +55,7 @@ public class MostrarCarreras extends HttpServlet {
             out.println("<div class='card-boder-info mb-3'>");
             out.println("<div class='card-body'>");
             out.println("<h5 class='card-title'>Listado de Carreras</h5>");
-            out.println("<table class='table table-striped'");
+            out.println("<table class='table table-striped'>");
             out.println("<tr>");
             out.println("<th>ID Carrera</th>");
             out.println("<th>Nombre Carrera</th>");
