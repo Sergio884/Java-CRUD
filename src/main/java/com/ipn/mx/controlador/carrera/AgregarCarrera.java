@@ -43,13 +43,13 @@ public class AgregarCarrera extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Agregar Carrera</title>");
+            out.println("<title>Agregar una Carrera</title>");
             out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
             out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
             out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
             out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");                           
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body >");
         
             String msg = "";
             Carrera c = new Carrera();
@@ -59,15 +59,16 @@ public class AgregarCarrera extends HttpServlet {
             CarreraDAO dao = new CarreraDAO();
             try {
                 dao.create(c);
+                out.println("<div align='center' style='background-color:lightgreen;'>");
                 msg = "La carrera se agrego exitosamente";
             } catch (SQLException ex) {
                 Logger.getLogger(CarreraDAO.class.getName()).log(Level.SEVERE, null, ex);
+                out.println("<div align='center' style='background-color:#FF6666;'>");
                 msg = "Hubo un error al agregar la carrera";
-            }
-            out.println("<div align='center'>");
-            out.println(msg);
+            }         
+            out.println("<h1>"+msg+"</h1>");
             out.println("<br/>");
-            out.println("<a href='MostrarCarreras'>Lista de carreras<a/>");
+            out.println("<a href='MostrarCarreras' class='btn btn-primary'>Lista de carreras<a/>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");

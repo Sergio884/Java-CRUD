@@ -71,7 +71,7 @@ public class ActualizarAlumno extends HttpServlet {
                 Logger.getLogger(AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
                 msg = "Hubo un error al actualizar a el alumno";
             }
-            out.println("<div align='center'>");
+            out.println("<div align='center' style='background-color:#FFFFCC;'>");
             out.println("<h5 class='card-title'>"+msg+"</h5>");
             out.println("<br/>");
             out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a>");

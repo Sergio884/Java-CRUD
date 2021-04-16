@@ -4,6 +4,7 @@ com\ipn\mx\controlador\carrera\EliminarCarrera.class
 com\ipn\mx\controlador\usuario\MostrarDatos.class
 com\ipn\mx\controlador\carrera\Actualizar.class
 com\ipn\mx\modelo\entidades\Alumno.class
+com\ipn\mx\controlador\alumno\ActualizarAlumno.class
 com\ipn\mx\controlador\carrera\MostrarCarreras.class
 com\ipn\mx\controlador\carrera\VerCarrera.class
 com\ipn\mx\controlador\carrera\ActualizarCarrera.class
@@ -11,4 +12,5 @@ com\ipn\mx\modelo\entidades\Carrera.class
 com\ipn\mx\modelo\dao\CarreraDAO.class
 com\ipn\mx\modelo\dto\AlumnoDTO.class
 com\ipn\mx\controlador\carrera\AgregarCarrera.class
+com\ipn\mx\controlador\alumno\AgregarAlumno.class
 com\ipn\mx\controlador\usuario\UsuarioServlet.class

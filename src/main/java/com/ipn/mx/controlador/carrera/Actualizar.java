@@ -65,7 +65,7 @@ public class Actualizar extends HttpServlet {
                 Logger.getLogger(CarreraDAO.class.getName()).log(Level.SEVERE, null, ex);
                 msg = "Hubo un error al actualizar la carrera";
             }
-            out.println("<div align='center'>");
+            out.println("<div align='center' style='background-color:#FFFFCC;'>");
             out.println("<h5 class='card-title'>"+msg+"</h5>");
             out.println("<br/>");
             out.println("<a href='MostrarCarreras' class='btn btn-success'>Lista de carreras<a/>");

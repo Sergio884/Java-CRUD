@@ -229,6 +229,10 @@ public class AlumnoServlet extends HttpServlet {
             out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");
             out.println("</head>");
             out.println("<body>");
+            out.println("<div class='container'>");
+            out.println("<div class='card-boder-info mb-3'>");
+            out.println("<div class='card-body'>");
+            out.println("<h5 class='card-title'>Actualizar Alumno</h5>");
             
             AlumnoDTO dto = new AlumnoDTO();
             dto.getEntidad().setIdAlumno(Integer.parseInt(request.getParameter("id")));
@@ -241,7 +245,7 @@ public class AlumnoServlet extends HttpServlet {
             }
             if(dto != null){
                 out.println("<form name='frmDatos' method='post' action='ActualizarAlumno?id="+dto.getEntidad().getIdAlumno()+"'>");
-                out.println("<table align='center'>");
+                out.println("<table  class='table table-striped'>");
                    
                   out.println("<tr>");
                     out.println("<td>ID Alumno:</td><td>"+dto.getEntidad().getIdAlumno()+"</td>");
@@ -278,16 +282,17 @@ public class AlumnoServlet extends HttpServlet {
                    out.println("</tr>");
                    
                    out.println("<tr>");
-                   out.println("<td colspan='2'><div align='center'><br/><input type='submit' value='Actualizar' class='btn btn-success' name='btnActualizar'></div></td>");
+                   out.println("<td><div align='center'><br/><input type='submit' value='Actualizar' class='btn btn-success' name='btnActualizar'></div></td>");
+                   
+                out.println("<td><div align='center'><a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a></div></td>");
                    out.println("</tr>");
                    
                 out.println("</table>");
-                out.println("<br/>");
-                out.println("<div align='center'>");
-                out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a>");
-                out.println("</div>");
+                
             }
-            
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -327,7 +332,7 @@ public class AlumnoServlet extends HttpServlet {
             if(dto != null){   
                 out.println("<table class='table table-striped'>");
                 out.println("<tr>");
-                out.println("<td>ID Alumno</td><td>"+dto.getEntidad().getIdAlumno()+"</td>");
+                out.println("<th>ID Alumno</th><td>"+dto.getEntidad().getIdAlumno()+"</td>");
                 out.println("</tr>");
                 out.println("<tr>");
                 out.println("<th>Nombre</th><td>"+dto.getEntidad().getNombre()+"</td>");
@@ -353,6 +358,7 @@ public class AlumnoServlet extends HttpServlet {
                 out.println("</div>");
             }
             
+            out.println("</div>");
             out.println("</div>");
             out.println("</div>");
             out.println("</body>");
@@ -389,9 +395,8 @@ public class AlumnoServlet extends HttpServlet {
              } catch (SQLException ex) {
                  Logger.getLogger(AlumnoServlet.class.getName()).log(Level.SEVERE, null, ex);
                  msg = "Hubo un error al eliminar al alumno";
-             }
-             
-            out.println("<div align='center'>");
+             }                
+            out.println("<div align='center' style='background-color:#FF6666;'>"); 
             out.println("<h1>"+msg+"</h1>");
             out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista De Alumnos</a>");
             out.println("</div>");

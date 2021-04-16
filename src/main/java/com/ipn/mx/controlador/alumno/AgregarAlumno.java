@@ -44,7 +44,7 @@ public class AgregarAlumno extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AgregarAlumno</title>");            
+            out.println("<title>Agregar a Alumno</title>");            
             out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet'>");
             out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js'></script>");
             out.println("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js'></script>");
@@ -64,12 +64,13 @@ public class AgregarAlumno extends HttpServlet {
             AlumnoDAO dao = new AlumnoDAO();
             try {
                 dao.create(dto);
+                out.println("<div align='center' style='background-color:lightgreen;'>");
                 msg = "El alumno se agrego exitosamente";
             } catch (SQLException ex) {
                 Logger.getLogger(AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                out.println("<div align='center' style='background-color:#FF6666;'>");
                 msg = "Hubo un error al agregar el alumno";
             }
-            out.println("<div align='center'>");
             out.println("<h5 class='card-title'>"+msg+"</h5>");
             out.println("<br/>");
             out.println("<a href='AlumnoServlet?accion=listaDeAlumnos' class='btn btn-primary'>Lista de Alumnos<a/>");

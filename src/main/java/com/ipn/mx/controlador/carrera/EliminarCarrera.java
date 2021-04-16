@@ -60,7 +60,7 @@ public class EliminarCarrera extends HttpServlet {
                 Logger.getLogger(EliminarCarrera.class.getName()).log(Level.SEVERE, null, ex);
                 msg="No se puedo eliminar el registro";
             }
-            out.println("<div align='center'>");
+            out.println("<div align='center'  style='background-color:#FF6666;'>");
             out.println("<h2>"+msg+"</h2>");
             out.println("<br/>");
             out.println("<a href='MostrarCarreras' class='btn btn-success'>Mostrar Carreras</a>");

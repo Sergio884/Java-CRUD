@@ -50,6 +50,11 @@ public class VerCarrera extends HttpServlet {
             out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js'></script>");   
             out.println("</head>");
             out.println("<body>");
+            out.println("<div class='container'>");
+            out.println("<div class='card-boder-info mb-3'>");
+            out.println("<div class='card-header'>Carrera</div>");
+            out.println("<div class='card-body'>");
+            out.println("<h5 class='card-title'>Información</h5>");
 
             Carrera c = new Carrera();
             c.setIdCarrera(Integer.parseInt(request.getParameter("id")));
@@ -61,18 +66,18 @@ public class VerCarrera extends HttpServlet {
                 Logger.getLogger(CarreraDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
             if(c != null){
-                out.println("<table align='center'>");
+                out.println("<table class='table table-striped'>");
                    
                   out.println("<tr>");
-                    out.println("<td>ID Carrera:</td><td>"+c.getIdCarrera()+"</td>");
+                    out.println("<th>ID Carrera:</th><td>"+c.getIdCarrera()+"</td>");
                    out.println("</tr>");
                    
                    out.println("<tr>");
-                    out.println("<td>Nombre Carrera:</td><td>"+c.getNombreCarrera()+"</td>");
+                    out.println("<th>Nombre Carrera:</th><td>"+c.getNombreCarrera()+"</td>");
                    out.println("</tr>");
                    
                    out.println("<tr>");
-                    out.println("<td>Duracion:</td><td>"+c.getDuracion()+"</td>");
+                    out.println("<th>Duracion:</th><td>"+c.getDuracion()+"</td>");
                    out.println("</tr>");
                 out.println("</table>");
                 out.println("<br/>");
@@ -82,6 +87,10 @@ public class VerCarrera extends HttpServlet {
                 out.println("<a href='MostrarCarreras' class='btn btn-success'>Mostrar Carreras</a>");
                 out.println("</div>");
             }
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+
 
             out.println("</body>");
             out.println("</html>");
